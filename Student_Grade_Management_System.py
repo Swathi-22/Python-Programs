@@ -1,4 +1,12 @@
 
+def validate_mark(marks):
+    for mark in marks:
+        mark = int(mark)
+        if mark < 0 or mark > 100:
+            return False
+    return True
+
+
 def calculate_average(marks):
     toatl = 0
     for i in marks:
@@ -23,7 +31,10 @@ def get_grade(average):
 
 marks = input("Enter marks for 5 subjects : ")
 mrk_splt = marks.split()
-average = calculate_average(mrk_splt)
-grade = get_grade(average)
-print(f"Average Marks: {average}")
-print(f"Grade: {grade}")
+if validate_mark(mrk_splt):
+    average = calculate_average(mrk_splt)
+    grade = get_grade(average)
+    print(f"Average Marks: {average}")
+    print(f"Grade: {grade}")
+else:
+    print("Error : Mark should between 0 and 100.")
